@@ -14,68 +14,68 @@
 [![Stars](https://img.shields.io/github/stars/OMSociety/AstrBotAdapter_NeoForge)](https://github.com/OMSociety/AstrBotAdapter_NeoForge/stargazers)
 [![Issues](https://img.shields.io/github/issues/OMSociety/AstrBotAdapter_NeoForge)](https://github.com/OMSociety/AstrBotAdapter_NeoForge/issues)
 
-[✨ 核心特性](#-核心特性) • [📖 功能概览](#-功能概览) • [🚀 快速开始](#-快速开始) • [🧷 群友绑定与白名单](#-群友绑定与白名单) • [🎮 游戏内指令](#-游戏内指令) • [⚙️ 配置项说明](#️-配置项说明) • [🧩 架构](#-架构) • [📝 更新日志](#-更新日志)
+[核心特性](#核心特性) • [功能概览](#功能概览) • [快速开始](#快速开始) • [群友绑定与白名单](#群友绑定与白名单) • [游戏内指令](#游戏内指令) • [配置项说明](#配置项说明) • [架构](#架构) • [更新日志](#更新日志)
 
 </div>
 
-> 🎨 本项目由 AI 编写 · 移植自 [AstrBotAdapter](https://github.com/Railgun19457/AstrBotAdapter)（原作者 [railgun19457](https://github.com/Railgun19457)）
+> 本项目由 AI 编写 · 移植自 [AstrBotAdapter](https://github.com/Railgun19457/AstrBotAdapter)（原作者 [railgun19457](https://github.com/Railgun19457)）
 >
 > 本仓库源自 [AstrBotAdapter_Forge](https://github.com/OMSociety/AstrBotAdapter_Forge)（Forge 1.20.1），现为 **NeoForge 26.2** 版本；两者共用同一套平台无关代码，本版本新增「群友绑定 QQ ↔ 游戏 ID → 自动进白名单」。
 
 ---
 
-## ✨ 核心特性
+## 核心特性
 
 | 特性 | 说明 |
 |------|------|
-| 🧱 **消息互通** | 游戏内聊天 ↔ AstrBot 双向转发，支持发送者信息展示与自定义显示格式 |
-| 📊 **服务器状态监控** | 在线人数 / 内存 / 运行时间 / **TPS / MSPT** —— 原生自统计，**无需前置 mod** |
-| 🛡️ **远程指令执行** | REST / WebSocket 远程执行服务器指令，黑白名单 + `*` 通配符过滤 |
-| 🤖 **游戏内 AI 聊天** | `@` 群聊 / `#` 私聊前缀触发，思考中提示，回复格式可自定义 |
-| 🔔 **玩家事件通知** | 玩家加入 / 离开服务器实时推送到 AstrBot |
-| 🧷 **群友绑定白名单** | 群友自助绑定 QQ 与游戏 ID，自动写入白名单；**兼容 Geyser + Floodgate 基岩版玩家** |
-| ⚙️ **游戏内指令** | `/astrbot` 管理指令：状态查看 / 配置热重载 / token 管理 / 连接数查询 |
-| 🔄 **配置热重载** | `/astrbot reload` 即时生效，**含端口等网络配置**（自动重启通信服务） |
+| **消息互通** | 游戏内聊天 ↔ AstrBot 双向转发，支持发送者信息展示与自定义显示格式 |
+| **服务器状态监控** | 在线人数 / 内存 / 运行时间 / **TPS / MSPT** —— 原生自统计，**无需前置 mod** |
+| **远程指令执行** | REST / WebSocket 远程执行服务器指令，黑白名单 + `*` 通配符过滤 |
+| **游戏内 AI 聊天** | `@` 群聊 / `#` 私聊前缀触发，思考中提示，回复格式可自定义 |
+| **玩家事件通知** | 玩家加入 / 离开服务器实时推送到 AstrBot |
+| **群友绑定白名单** | 群友自助绑定 QQ 与游戏 ID，自动写入白名单；**兼容 Geyser + Floodgate 基岩版玩家** |
+| **游戏内指令** | `/astrbot` 管理指令：状态查看 / 配置热重载 / token 管理 / 连接数查询 |
+| **配置热重载** | `/astrbot reload` 即时生效，**含端口等网络配置**（自动重启通信服务） |
 
 ---
 
-## 📖 功能概览
+## 功能概览
 
-### 🧱 消息互通
+### 消息互通
 服务器聊天消息实时转发至 AstrBot，AstrBot 也可向服务器发送消息：
-- 💬 游戏内 → AstrBot：玩家聊天自动转发（支持前缀过滤与自定义显示格式）
-- 📨 AstrBot → 游戏内：外部消息推送至服务器，显示平台来源与发送者
+- 游戏内 → AstrBot：玩家聊天自动转发（支持前缀过滤与自定义显示格式）
+- AstrBot → 游戏内：外部消息推送至服务器，显示平台来源与发送者
 
-### 📊 服务器状态监控
+### 服务器状态监控
 实时监测并上报服务器运行状态：
-- 👥 **玩家信息** — 在线列表与数量变化
-- 📈 **TPS / MSPT** — 基于服务端 tick 事件自统计（1m / 5m / 15m 滑动窗口），无 Bukkit API 依赖
-- 🧠 **内存** — JVM 内存使用情况
-- ⏱️ **运行时间** — 服务器已运行时长
+- **玩家信息** — 在线列表与数量变化
+- **TPS / MSPT** — 基于服务端 tick 事件自统计（1m / 5m / 15m 滑动窗口），无 Bukkit API 依赖
+- **内存** — JVM 内存使用情况
+- **运行时间** — 服务器已运行时长
 
 > Forge / NeoForge 没有 Bukkit 的 `/tps`、`/ping` 命令，本模组通过事件总线自行统计 tick 间隔，**不需要前置 mod**。
 
-### 🛡️ 远程指令执行
+### 远程指令执行
 通过 REST API 远程执行服务器指令，支持黑白名单过滤：
-- 🛡️ **过滤模式** — `NONE` / `BLACKLIST` / `WHITELIST`
-- 🔀 **通配符匹配** — 指令列表支持 `*` 通配符
+- **过滤模式** — `NONE` / `BLACKLIST` / `WHITELIST`
+- **通配符匹配** — 指令列表支持 `*` 通配符
 
-### 🤖 游戏内 AI 聊天
+### 游戏内 AI 聊天
 在游戏内直接与 AstrBot 的 AI 对话：
-- 👥 **群聊 AI** — 前缀触发（默认 `@`）
-- 💬 **私聊 AI** — 前缀触发（默认 `#`），可自定义回显格式
-- ⏳ **思考中提示** — 可开关，AI 回复期间显示「思考中...」
+- **群聊 AI** — 前缀触发（默认 `@`）
+- **私聊 AI** — 前缀触发（默认 `#`），可自定义回显格式
+- **思考中提示** — 可开关，AI 回复期间显示「思考中...」
 
-### 🔔 玩家事件通知
-- 🟢 玩家加入服务器时通知
-- 🔴 玩家离开服务器时通知
+### 玩家事件通知
+- 玩家加入服务器时通知
+- 玩家离开服务器时通知
 
-### 🧷 群友绑定与白名单
-群友在聊天群里自助绑定，无需管理员手动加白名单。详见 [群友绑定与白名单](#-群友绑定与白名单)。
+### 群友绑定与白名单
+群友在聊天群里自助绑定，无需管理员手动加白名单。详见 [群友绑定与白名单](#群友绑定与白名单)。
 
 ---
 
-## 🚀 快速开始
+## 快速开始
 
 ### 兼容性
 
@@ -105,11 +105,11 @@
 2. 在 MaiBot 安装配套插件 [maibot_plugin_minecraft_adapter](https://github.com/OMSociety/maibot_plugin_minecraft_adapter)
 3. 在插件中添加服务器，配置地址、端口（默认 `8765`）和认证 token
 
-> 💡 模组开箱即用：默认配置（监听 `0.0.0.0:8765`，WS + REST 双通道）即可连接，无需额外调整。
+> **提示：**模组开箱即用：默认配置（监听 `0.0.0.0:8765`，WS + REST 双通道）即可连接，无需额外调整。
 
 ---
 
-## 🧷 群友绑定与白名单
+## 群友绑定与白名单
 
 ### 它解决什么问题
 
@@ -155,7 +155,7 @@ binding:
 
 基岩版（`kind=geyser`）的 UUID 由 Bedrock XUID 生成，本地推导不出来，改用 Floodgate 的 `fwhitelist add <名字>`（名字不带前缀）；服务器没装 Floodgate 时会退回 `whitelist add` 并在日志里明确警告。
 
-> 💡 若某位群友绑定后仍提示 `You are not white-listed on this server!`，让他**重新发一次 `/mc bind <游戏ID>`** 即可：新版本会把白名单里那条错误 UUID 改成正确的离线 UUID。
+> **提示：**若某位群友绑定后仍提示 `You are not white-listed on this server!`，让他**重新发一次 `/mc bind <游戏ID>`** 即可：新版本会把白名单里那条错误 UUID 改成正确的离线 UUID。
 
 ### 基岩版（Geyser + Floodgate）兼容说明
 
@@ -180,11 +180,11 @@ Floodgate 的 `use-prefix` 默认为开，基岩版玩家在服务端看到的�
 | 服务器未开白名单 | 绑定仍会成功写入，但需在 `server.properties` 里设置 `white-list=true` 才生效 |
 | 绑定功能关闭 | 绑定指令会明确提示功能未启用，不会静默失败 |
 
-> ⚠️ 安全设计：白名单写入走**专用绑定接口**，而不是通用指令执行接口。因此即使机器人 token 泄露，也无法借绑定接口执行任意服务器指令；本功能也与 `commandExecution` 里对 `whitelist *` 的黑名单互不影响。
+> **注意：**安全设计：白名单写入走**专用绑定接口**，而不是通用指令执行接口。因此即使机器人 token 泄露，也无法借绑定接口执行任意服务器指令；本功能也与 `commandExecution` 里对 `whitelist *` 的黑名单互不影响。
 
 ---
 
-## 🎮 游戏内指令
+## 游戏内指令
 
 | 指令 | 说明 |
 |------|------|
@@ -194,11 +194,11 @@ Floodgate 的 `use-prefix` 默认为开，基岩版玩家在服务端看到的�
 | `/astrbot token [show/regen]` | 显示/重新生成认证 token |
 | `/astrbot connections` | 显示当前活跃的 ws 连接 |
 
-> 权限：敏感子命令（`reload` / `token` / `connections`）需要 **OP 等级 2**（无 Bukkit 权限系统，按 OP 等级判定）
+> **权限：**敏感子命令（`reload` / `token` / `connections`）需要 **OP 等级 2**（无 Bukkit 权限系统，按 OP 等级判定）
 
 ---
 
-## ⚙️ 配置项说明
+## 配置项说明
 
 配置文件（首次启动自动生成）：`config/astrbotadapter/config.yml`
 
@@ -356,7 +356,7 @@ binding:
 
 ---
 
-## 🧩 架构
+## 架构
 
 ### 仓库结构
 
@@ -390,7 +390,7 @@ src/       NeoForge 26.2 专属层：平台适配器 + 事件监听 + neoforge.m
 
 ---
 
-## 🔧 从源码构建
+## 从源码构建
 
 需要 **JDK 25**（Minecraft 26.2 的运行时要求）：
 
@@ -418,38 +418,26 @@ HTTPS_PROXY=http://127.0.0.1:7897
 > （代理同时写进 `org.gradle.jvmargs`，因为 NeoFormRuntime 的工具子进程不继承 Gradle 的 systemProp）。
 > **不需要代理时请把 `gradle.properties` 里的 `systemProp.*proxy*` 与 `org.gradle.jvmargs` 中的 `-D*.proxy*` 一并删掉**，否则会连不上。
 
-> ℹ️ **NeoForge 版本已固定在 `26.2.0.80`**，不是最新的 `26.2.0.87`。
-> 原因：`26.2.0.87` 的 userdev access transformer 含一条失效条目
+> **NeoForge 版本已固定在 `26.2.0.80`**，不是最新的 `26.2.0.87`。
+> **原因：**`26.2.0.87` 的 userdev access transformer 含一条失效条目
 > `public net.minecraft.core.HolderSet$1 contents()Ljava/util/List;`（该匿名类在 26.2 中已不存在），
 > 会让 `:createMinecraftArtifacts` 的反编译阶段必然失败；`26.2.0.80` 没有这条 AT，可干净构建。
 > 该条目在未发布的 26.3 分支上已被删除，等 NeoForge 发布修复版后可以升回去（改 `gradle.properties` 的 `neo_version` 即可）。
 
----
+## 更新日志
 
-## 📝 更新日志
+> **[查看完整更新日志 →](CHANGELOG.md)**
 
-> 📋 **[查看完整更新日志 →](CHANGELOG.md)**
-
----
-
-## 🤝 贡献与反馈
+## 贡献与致谢
 
 如遇问题请在 [GitHub Issues](https://github.com/OMSociety/AstrBotAdapter_NeoForge/issues) 提交，欢迎 Pull Request！
-
-## 🙏 致谢
 
 - [AstrBot](https://github.com/AstrBotDevs/AstrBot) 开源聊天机器人框架
 - [AstrBotAdapter](https://github.com/Railgun19457/AstrBotAdapter) 上游插件（[railgun19457](https://github.com/Railgun19457)）
 
----
-
-## 📜 许可证
+## 许可证与作者
 
 本项目采用 **MIT License** 开源协议（上游 [AstrBotAdapter](https://github.com/Railgun19457/AstrBotAdapter) 同样为 MIT）。
 
----
-
-## 👤 作者
-
-**railgun19457** — AstrBotAdapter 原作者 [@Railgun19457](https://github.com/Railgun19457)  
+**railgun19457** — AstrBotAdapter 原作者 [@Railgun19457](https://github.com/Railgun19457)<br>
 **OMSociety** — 多加载器维护 [@OMSociety](https://github.com/OMSociety)
