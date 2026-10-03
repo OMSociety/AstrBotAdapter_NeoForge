@@ -105,7 +105,7 @@
 2. 在 MaiBot 安装配套插件 [maibot_plugin_minecraft_adapter](https://github.com/OMSociety/maibot_plugin_minecraft_adapter)
 3. 在插件中添加服务器，配置地址、端口（默认 `8765`）和认证 token
 
-> **提示：**模组开箱即用：默认配置（监听 `0.0.0.0:8765`，WS + REST 双通道）即可连接，无需额外调整。
+> **提示**：模组开箱即用：默认配置（监听 `0.0.0.0:8765`，WS + REST 双通道）即可连接，无需额外调整。
 
 ---
 
@@ -155,7 +155,7 @@ binding:
 
 基岩版（`kind=geyser`）的 UUID 由 Bedrock XUID 生成，本地推导不出来，改用 Floodgate 的 `fwhitelist add <名字>`（名字不带前缀）；服务器没装 Floodgate 时会退回 `whitelist add` 并在日志里明确警告。
 
-> **提示：**若某位群友绑定后仍提示 `You are not white-listed on this server!`，让他**重新发一次 `/mc bind <游戏ID>`** 即可：新版本会把白名单里那条错误 UUID 改成正确的离线 UUID。
+> **提示**：若某位群友绑定后仍提示 `You are not white-listed on this server!`，让他**重新发一次 `/mc bind <游戏ID>`** 即可：新版本会把白名单里那条错误 UUID 改成正确的离线 UUID。
 
 ### 基岩版（Geyser + Floodgate）兼容说明
 
@@ -180,7 +180,7 @@ Floodgate 的 `use-prefix` 默认为开，基岩版玩家在服务端看到的�
 | 服务器未开白名单 | 绑定仍会成功写入，但需在 `server.properties` 里设置 `white-list=true` 才生效 |
 | 绑定功能关闭 | 绑定指令会明确提示功能未启用，不会静默失败 |
 
-> **注意：**安全设计：白名单写入走**专用绑定接口**，而不是通用指令执行接口。因此即使机器人 token 泄露，也无法借绑定接口执行任意服务器指令；本功能也与 `commandExecution` 里对 `whitelist *` 的黑名单互不影响。
+> **注意**：安全设计：白名单写入走**专用绑定接口**，而不是通用指令执行接口。因此即使机器人 token 泄露，也无法借绑定接口执行任意服务器指令；本功能也与 `commandExecution` 里对 `whitelist *` 的黑名单互不影响。
 
 ---
 
@@ -194,7 +194,7 @@ Floodgate 的 `use-prefix` 默认为开，基岩版玩家在服务端看到的�
 | `/astrbot token [show/regen]` | 显示/重新生成认证 token |
 | `/astrbot connections` | 显示当前活跃的 ws 连接 |
 
-> **权限：**敏感子命令（`reload` / `token` / `connections`）需要 **OP 等级 2**（无 Bukkit 权限系统，按 OP 等级判定）
+> **权限**：敏感子命令（`reload` / `token` / `connections`）需要 **OP 等级 2**（无 Bukkit 权限系统，按 OP 等级判定）
 
 ---
 
@@ -419,7 +419,7 @@ HTTPS_PROXY=http://127.0.0.1:7897
 > **不需要代理时请把 `gradle.properties` 里的 `systemProp.*proxy*` 与 `org.gradle.jvmargs` 中的 `-D*.proxy*` 一并删掉**，否则会连不上。
 
 > **NeoForge 版本已固定在 `26.2.0.80`**，不是最新的 `26.2.0.87`。
-> **原因：**`26.2.0.87` 的 userdev access transformer 含一条失效条目
+> **原因**：`26.2.0.87` 的 userdev access transformer 含一条失效条目
 > `public net.minecraft.core.HolderSet$1 contents()Ljava/util/List;`（该匿名类在 26.2 中已不存在），
 > 会让 `:createMinecraftArtifacts` 的反编译阶段必然失败；`26.2.0.80` 没有这条 AT，可干净构建。
 > 该条目在未发布的 26.3 分支上已被删除，等 NeoForge 发布修复版后可以升回去（改 `gradle.properties` 的 `neo_version` 即可）。
